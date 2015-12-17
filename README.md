@@ -30,9 +30,9 @@ Documentation inside the `Doc` folder is written using [LyX](https://www.lyx.org
 
 ## Authors
 
-Raffaele Daniele Facendola
-Matteo Guarnerio
-Mattia Natali
+- Raffaele Daniele Facendola
+- Matteo Guarnerio
+- Mattia Natali
 
 
 ## License
