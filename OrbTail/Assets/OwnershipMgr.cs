@@ -43,7 +43,7 @@ public class OwnershipMgr : MonoBehaviour {
 
 		var stack = view_id_table[player];
 
-		Debug.Log (player);
+		Debug.Log("Player " + player);
 
 		if( !view_id_table.ContainsKey(player)){
 

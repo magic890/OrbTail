@@ -59,7 +59,7 @@ public class HostFetcher : MonoBehaviour
     void OnFailedToConnectToMasterServer(NetworkConnectionError info)
     {
         
-        Debug.Log("Could not connect to master server: " + info);
+        Debug.Log("Could not connect to master server " + info);
 
         if (EventNoMaster != null)
         {

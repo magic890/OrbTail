@@ -19,7 +19,6 @@ Available on multiple platforms:
 - **HUD** player name on the top of the ship. Beat up your friends! 😃🎉
 - **Network** improve prediction.
 - **General optimization** remove the millions of `Instantiate`.
-- **General optimization** remove void `Debug.Log`.
 - **Rocket** Enable wall and orbs collision. Orb collision will not blow up the rocket, instead it will push away orbs, this will add more fun to the environment!
 
 
