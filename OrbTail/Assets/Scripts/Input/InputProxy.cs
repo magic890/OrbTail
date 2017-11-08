@@ -10,7 +10,7 @@ public class InputProxy : MonoBehaviour, IInputBroker{
     // Use this for initialization
 	public void Start () {
         
-        if (NetworkHelper.IsOwnerSide(networkView))
+        if (NetworkHelper.IsOwnerSide(GetComponent<NetworkView>()))
         {
 
             var identity = GetComponent<PlayerIdentity>();
@@ -79,13 +79,13 @@ public class InputProxy : MonoBehaviour, IInputBroker{
         //Stream: | Acceleration | Steering | #Powers | Group(1) | Group(2) | ...
 
         if (stream.isWriting &&
-            networkView.isMine)
+            GetComponent<NetworkView>().isMine)
         {
 
             Serialize(stream);
 
         }else if( stream.isReading &&
-                  !networkView.isMine)
+                  !GetComponent<NetworkView>().isMine)
         {
 
             Deserialize(stream);

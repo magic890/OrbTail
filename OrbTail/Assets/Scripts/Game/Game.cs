@@ -175,7 +175,7 @@ public class Game : MonoBehaviour {
                 {
 
                     return o.GetComponent<PlayerIdentity>().IsHuman &&
-                           NetworkHelper.IsOwnerSide(o.networkView);
+                           NetworkHelper.IsOwnerSide(o.GetComponent<NetworkView>());
 
                 }).First();
 
@@ -386,7 +386,7 @@ public class Game : MonoBehaviour {
                 foreach (GameObject orb in orbs)
                 {
 
-                    networkView.RPC("RPCChangeOwnership", RPCMode.All, orb.networkView.viewID, ownership_mgr.FetchViewID(Network.player));
+                    GetComponent<NetworkView>().RPC("RPCChangeOwnership", RPCMode.All, orb.GetComponent<NetworkView>().viewID, ownership_mgr.FetchViewID(Network.player));
 
                 }
 
@@ -396,8 +396,8 @@ public class Game : MonoBehaviour {
             RemoveShip(disconnected_player);
 
             //Destroy the player who left
-            Network.RemoveRPCs(disconnected_player.networkView.owner);
-            Network.DestroyPlayerObjects(disconnected_player.networkView.owner);
+            Network.RemoveRPCs(disconnected_player.GetComponent<NetworkView>().owner);
+            Network.DestroyPlayerObjects(disconnected_player.GetComponent<NetworkView>().owner);
 
             //There's only one player, he must have won
             if (ShipsInGame.Count() <= 1)
@@ -478,7 +478,7 @@ public class Game : MonoBehaviour {
         if (Network.isServer)
         {
 
-            networkView.RPC("EndMatch", RPCMode.All);
+            GetComponent<NetworkView>().RPC("EndMatch", RPCMode.All);
 
         }
         else if(!Network.isClient)
@@ -586,7 +586,7 @@ public class Game : MonoBehaviour {
             if (Network.isServer)
             {
 
-                networkView.RPC("RPCSyncTime", RPCMode.Others, game_time_counter);
+                GetComponent<NetworkView>().RPC("RPCSyncTime", RPCMode.Others, game_time_counter);
 
             }
             else if (Network.isClient)
@@ -615,7 +615,7 @@ public class Game : MonoBehaviour {
     private void RPCChangeOwnership(NetworkViewID old_view_id, NetworkViewID new_view_id)
     {
 
-        NetworkView.Find(old_view_id).networkView.viewID = new_view_id;
+        NetworkView.Find(old_view_id).GetComponent<NetworkView>().viewID = new_view_id;
 
     }
 

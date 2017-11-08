@@ -21,10 +21,10 @@ public class MissileBehavior : MonoBehaviour {
         Owner = owner;
 
         if (Network.peerType != NetworkPeerType.Disconnected &&
-            networkView.isMine)
+            GetComponent<NetworkView>().isMine)
         {
 
-            networkView.RPC("RPCSetTarget", RPCMode.Others, target.networkView.viewID, owner.networkView.viewID);
+            GetComponent<NetworkView>().RPC("RPCSetTarget", RPCMode.Others, target.GetComponent<NetworkView>().viewID, owner.GetComponent<NetworkView>().viewID);
 
         }
 
@@ -95,7 +95,7 @@ public class MissileBehavior : MonoBehaviour {
                 else
                 {
 
-                    networkView.RPC("RPCOnImpact", RPCMode.All, collision.gameObject.networkView.viewID);
+                    GetComponent<NetworkView>().RPC("RPCOnImpact", RPCMode.All, collision.gameObject.GetComponent<NetworkView>().viewID);
 
                 }
 
@@ -122,7 +122,7 @@ public class MissileBehavior : MonoBehaviour {
         else
         {
 
-            networkView.RPC("RPCDestroyMissile", RPCMode.All);
+            GetComponent<NetworkView>().RPC("RPCDestroyMissile", RPCMode.All);
 
         }
 
@@ -131,7 +131,7 @@ public class MissileBehavior : MonoBehaviour {
     private void OnImpact(GameObject target)
     {
 
-        target.rigidbody.AddForce(transform.forward * explosionForce, ForceMode.Impulse);
+        target.GetComponent<Rigidbody>().AddForce(transform.forward * explosionForce, ForceMode.Impulse);
 
         StartCoroutine("DestroyMissile");
 
@@ -162,8 +162,8 @@ public class MissileBehavior : MonoBehaviour {
 		AudioSource.PlayClipAtPoint(explosionSound, transform.position);
 
         Target = null;
-        collider.enabled = false;
-        particleSystem.enableEmission = false;
+        GetComponent<Collider>().enabled = false;
+        GetComponent<ParticleSystem>().enableEmission = false;
         GetComponent<MeshFilter>().mesh = null;
 
         // Delayed for GFX

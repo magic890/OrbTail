@@ -39,7 +39,7 @@ public class OrbController : MonoBehaviour {
 		isLinked = true;
 
 		SpringJoint joint = this.gameObject.AddComponent<SpringJoint>();
-		joint.connectedBody = target.rigidbody;
+		joint.connectedBody = target.GetComponent<Rigidbody>();
 		joint.damper = dampSpring;
 		joint.spring = forceSpring;
 		joint.minDistance = minDistance;

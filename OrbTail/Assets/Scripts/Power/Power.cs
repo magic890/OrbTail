@@ -74,7 +74,7 @@ public abstract class Power : PowerView
 
         }
 
-        if (NetworkHelper.IsOwnerSide(Owner.networkView))
+        if (NetworkHelper.IsOwnerSide(Owner.GetComponent<NetworkView>()))
         {
             
             ActivateClient();

@@ -41,7 +41,7 @@ class AnimateTiledTexture : MonoBehaviour
         Colors.Enqueue(Color.blue);
         Colors.Enqueue(Color.magenta);
 
-        renderer.material.color = Colors.Peek();
+        GetComponent<Renderer>().material.color = Colors.Peek();
 
         game = GameObject.FindGameObjectWithTag(Tags.Game).GetComponent<Game>();
 
@@ -98,14 +98,14 @@ class AnimateTiledTexture : MonoBehaviour
     private void Flash(Color flash)
     {
 
-        renderer.material.color = flash;
+        GetComponent<Renderer>().material.color = flash;
 
     }
 
     private IEnumerator Colorize()
     {
 
-        var mat = renderer.material;
+        var mat = GetComponent<Renderer>().material;
 
         while (true)
         {

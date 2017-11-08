@@ -117,8 +117,8 @@ public class GUIChooseGameMode : GUIMenuChoose {
 				randomButton.GetComponent<TextMesh>().text = "Any";
 			break;
 		case GameBuilder.BuildMode.Host:
-			randomButton.renderer.enabled = false;
-			randomButton.collider.enabled = false;
+			randomButton.GetComponent<Renderer>().enabled = false;
+			randomButton.GetComponent<Collider>().enabled = false;
 			break;
 		}
 	}
@@ -158,7 +158,7 @@ public class GUIChooseGameMode : GUIMenuChoose {
 	}
 
 	private void setActiveButton(GameObject button, bool activated) {
-		button.collider.enabled = activated;
+		button.GetComponent<Collider>().enabled = activated;
 		button.GetComponent<TextMesh>().color = (activated ? enabledButtonColor :  disabledButtonColor);
 	}
 	

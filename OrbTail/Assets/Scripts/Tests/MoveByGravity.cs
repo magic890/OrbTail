@@ -16,7 +16,7 @@ public class MoveByGravity : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-		this.rigidbody.AddRelativeForce(Vector3.forward * Input.GetAxis("Vertical") * speedForce);
+		this.GetComponent<Rigidbody>().AddRelativeForce(Vector3.forward * Input.GetAxis("Vertical") * speedForce);
 		this.transform.rotation = Quaternion.Lerp(this.transform.rotation, Quaternion.LookRotation(Vector3.Cross(this.Gravity, this.transform.right), -this.Gravity) * Quaternion.AngleAxis(Input.GetAxis("Horizontal") * torqueForce, -this.Gravity), rollSmooth * Time.deltaTime);
 	}
 

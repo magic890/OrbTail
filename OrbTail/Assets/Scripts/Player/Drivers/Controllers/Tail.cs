@@ -82,11 +82,11 @@ public class Tail : MonoBehaviour {
 
         }
 
-        if (networkView.isMine ||
+        if (GetComponent<NetworkView>().isMine ||
             Network.peerType == NetworkPeerType.Disconnected)
         {
          
-            orb.rigidbody.AddForce(-orb.GetComponent<FloatingObject>().ArenaDown * attachForce, ForceMode.Impulse);
+            orb.GetComponent<Rigidbody>().AddForce(-orb.GetComponent<FloatingObject>().ArenaDown * attachForce, ForceMode.Impulse);
         
         }
 
@@ -118,16 +118,16 @@ public class Tail : MonoBehaviour {
         if (Network.isServer)
         {
 
-            var old_id = orb.networkView.viewID;
+            var old_id = orb.GetComponent<NetworkView>().viewID;
 
-            orb.networkView.viewID = ownership_mgr.FetchViewID(networkView.viewID.owner);
+            orb.GetComponent<NetworkView>().viewID = ownership_mgr.FetchViewID(GetComponent<NetworkView>().viewID.owner);
 
 			ownership_mgr.StoreViewID( old_id );
 
-            networkView.RPC("RPCAttachOrb",
+            GetComponent<NetworkView>().RPC("RPCAttachOrb",
                             RPCMode.Others,
                             old_id,
-                            orb.networkView.viewID);
+                            orb.GetComponent<NetworkView>().viewID);
 
         }
 
@@ -139,7 +139,7 @@ public class Tail : MonoBehaviour {
     {
        
 		UpdateTailColor();
-		orb.renderer.material = myOrbMaterial;
+		orb.GetComponent<Renderer>().material = myOrbMaterial;
         
     }
 
@@ -156,7 +156,7 @@ public class Tail : MonoBehaviour {
         foreach (GameObject orb in orbs)
         {
 
-			orb.renderer.material = defaultOrbMaterial;
+			orb.GetComponent<Renderer>().material = defaultOrbMaterial;
 
         }
 
@@ -170,7 +170,7 @@ public class Tail : MonoBehaviour {
 
         var orb = NetworkView.Find(orb_view_id).gameObject;
 
-        orb.networkView.viewID = new_view_id;
+        orb.GetComponent<NetworkView>().viewID = new_view_id;
 
         AttachOrb(orb);
 
@@ -191,7 +191,7 @@ public class Tail : MonoBehaviour {
 			GameObject orbToDetach = orbStack.Pop();
 			orbToDetach.GetComponent<OrbController>().Unlink();
 
-            orbToDetach.rigidbody.AddForce(Random.onUnitSphere * detachForce, ForceMode.Impulse);
+            orbToDetach.GetComponent<Rigidbody>().AddForce(Random.onUnitSphere * detachForce, ForceMode.Impulse);
 
 
 			detachedOrbs.Add(orbToDetach);
@@ -213,7 +213,7 @@ public class Tail : MonoBehaviour {
         {
 
             //eventLogger.NotifyOrbAttached(orb, gameObject);
-            networkView.RPC("RPCDetachOrbs", RPCMode.Others, nOrbs);
+            GetComponent<NetworkView>().RPC("RPCDetachOrbs", RPCMode.Others, nOrbs);
 
         }
 

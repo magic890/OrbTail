@@ -41,7 +41,7 @@ public class MenuSoundtrackHandler : MonoBehaviour {
 	}
 
 	private void StartBattleMusic() {
-		battleSound.audio.volume = 0.3f;
-		battleSound.audio.Play();
+		battleSound.GetComponent<AudioSource>().volume = 0.3f;
+		battleSound.GetComponent<AudioSource>().Play();
 	}
 }

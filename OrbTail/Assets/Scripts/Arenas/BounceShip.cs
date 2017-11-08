@@ -19,7 +19,7 @@ public class BounceShip : MonoBehaviour {
 
 		if (collider.tag == Tags.Ship) {
 			Vector3 directionForce = -collision.contacts[0].normal;
-			collider.rigidbody.AddForce(directionForce * bounceForce, ForceMode.Impulse);
+			collider.GetComponent<Rigidbody>().AddForce(directionForce * bounceForce, ForceMode.Impulse);
 		}
 	}
 }

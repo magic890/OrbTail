@@ -84,7 +84,7 @@ public class PowerController : MonoBehaviour
         if (Network.isServer)
         {
 
-            networkView.RPC("RPCAddPower", RPCMode.Others, power.Name);
+            GetComponent<NetworkView>().RPC("RPCAddPower", RPCMode.Others, power.Name);
 
         }
 
@@ -142,7 +142,7 @@ public class PowerController : MonoBehaviour
         }
 
         //Only the owner of the power can shoot it
-        if (NetworkHelper.IsOwnerSide(networkView))
+        if (NetworkHelper.IsOwnerSide(GetComponent<NetworkView>()))
         {
 
             Power power;
@@ -157,7 +157,7 @@ public class PowerController : MonoBehaviour
                     if (Network.peerType != NetworkPeerType.Disconnected)
                     {
 
-                        networkView.RPC("RPCFirePower", RPCMode.Others, power.Name);
+                        GetComponent<NetworkView>().RPC("RPCFirePower", RPCMode.Others, power.Name);
 
                     }
 

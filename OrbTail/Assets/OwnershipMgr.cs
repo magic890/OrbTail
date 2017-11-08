@@ -77,7 +77,7 @@ public class OwnershipMgr : MonoBehaviour {
         else
         {
 
-            networkView.RPC("RPCReceiveViewID", RPCMode.Server, Network.AllocateViewID());
+            GetComponent<NetworkView>().RPC("RPCReceiveViewID", RPCMode.Server, Network.AllocateViewID());
 
         }
 

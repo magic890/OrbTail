@@ -27,7 +27,7 @@ public class SmoothAnimation : MonoBehaviour {
         while (true)
         {
 
-            gameObject.renderer.material.color = Color.Lerp(gameObject.renderer.material.color, Color, Time.deltaTime * kAnimationSmooth);
+            gameObject.GetComponent<Renderer>().material.color = Color.Lerp(gameObject.GetComponent<Renderer>().material.color, Color, Time.deltaTime * kAnimationSmooth);
             gameObject.transform.localScale = Vector3.Lerp(gameObject.transform.localScale, Scale, Time.deltaTime * kAnimationSmooth);
 
             yield return new WaitForEndOfFrame();

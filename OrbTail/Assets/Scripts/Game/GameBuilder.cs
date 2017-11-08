@@ -174,7 +174,7 @@ public class GameBuilder : MonoBehaviour {
         {
 
             //The game is ready only when all players have dismissed the tutorial
-            networkView.RPC("RPCTutorialDismissed", RPCMode.All, Network.player);
+            GetComponent<NetworkView>().RPC("RPCTutorialDismissed", RPCMode.All, Network.player);
             
         }
 

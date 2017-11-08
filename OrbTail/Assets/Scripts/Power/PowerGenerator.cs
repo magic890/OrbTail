@@ -84,7 +84,7 @@ public class PowerGenerator : MonoBehaviour {
         if (Network.isServer)
         {
 
-            networkView.RPC("RPCSpawnPower", RPCMode.OthersBuffered, orb.networkView.viewID);
+            GetComponent<NetworkView>().RPC("RPCSpawnPower", RPCMode.OthersBuffered, orb.GetComponent<NetworkView>().viewID);
 
         }
 

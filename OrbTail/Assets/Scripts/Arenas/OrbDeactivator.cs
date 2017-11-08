@@ -33,9 +33,9 @@ public class OrbDeactivator : MonoBehaviour {
 
 	// TODO: the ship must be only one object
 	private IEnumerator DisableCollisionTemporaryBetween(GameObject gameObject1, GameObject gameObject2) {
-		Physics.IgnoreCollision(gameObject1.collider, gameObject2.collider, true);
+		Physics.IgnoreCollision(gameObject1.GetComponent<Collider>(), gameObject2.GetComponent<Collider>(), true);
 		yield return new WaitForSeconds(secondsDeactivated);
-		Physics.IgnoreCollision(gameObject1.collider, gameObject2.collider, false);
+		Physics.IgnoreCollision(gameObject1.GetComponent<Collider>(), gameObject2.GetComponent<Collider>(), false);
 	}
 
 

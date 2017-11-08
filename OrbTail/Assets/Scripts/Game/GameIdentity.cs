@@ -79,7 +79,7 @@ public class GameIdentity : MonoBehaviour {
     {
         get
         {
-            return NetworkHelper.IsOwnerSide(gameObject.networkView);
+            return NetworkHelper.IsOwnerSide(gameObject.GetComponent<NetworkView>());
         }
     }
 
@@ -129,7 +129,7 @@ public class GameIdentity : MonoBehaviour {
         if (Network.isServer)
         {
 
-            networkView.RPC("SetScore", RPCMode.Others, Score);
+            GetComponent<NetworkView>().RPC("SetScore", RPCMode.Others, Score);
 
         }
 
@@ -148,7 +148,7 @@ public class GameIdentity : MonoBehaviour {
         if (Network.isServer)
         {
 
-            networkView.RPC("SetScore", RPCMode.Others, Score);
+            GetComponent<NetworkView>().RPC("SetScore", RPCMode.Others, Score);
 
         }
 

@@ -35,7 +35,7 @@ public class ClientBuilder : NetworkPlayerBuilder {
         //Register the server identity
         Debug.Log("Registering to server...");
 
-        networkView.RPC("RPCRegisterPlayer", RPCMode.Server, Network.player, identity.ShipName);
+        GetComponent<NetworkView>().RPC("RPCRegisterPlayer", RPCMode.Server, Network.player, identity.ShipName);
         
     }
 
@@ -100,7 +100,7 @@ public class ClientBuilder : NetworkPlayerBuilder {
         {
 
             //Tells the server that the arena was loaded successfully
-            networkView.RPC("RPCArenaLoaded", RPCMode.Server, Id);
+            GetComponent<NetworkView>().RPC("RPCArenaLoaded", RPCMode.Server, Id);
 
         }
         

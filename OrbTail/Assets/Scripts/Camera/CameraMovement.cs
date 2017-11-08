@@ -60,7 +60,7 @@ public class CameraMovement : MonoBehaviour {
 			newPos = standardPos;
 			// Lerp the camera's position between it's current position and it's new position.
 			float newDistanceSmooth = distanceSmooth;
-			if (Vector3.Dot(player.transform.forward, player.rigidbody.velocity) < 0) {
+			if (Vector3.Dot(player.transform.forward, player.GetComponent<Rigidbody>().velocity) < 0) {
 				newDistanceSmooth *= 10;
 			}
 

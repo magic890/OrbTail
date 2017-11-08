@@ -128,7 +128,7 @@ public class TailController : MonoBehaviour {
 		float dotProduct = Vector3.Dot(attacker.transform.forward, relVector.normalized);
 		//Debug.Log(dotProduct);
 
-		float attackVelocity = Vector3.Dot (attacker.rigidbody.velocity.normalized, attacker.transform.forward);
+		float attackVelocity = Vector3.Dot (attacker.GetComponent<Rigidbody>().velocity.normalized, attacker.transform.forward);
 		return dotProduct >= dotProductAttackThreshold && attackVelocity > velocityAttackThreshold;
 	}
 }

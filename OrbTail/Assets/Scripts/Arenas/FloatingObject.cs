@@ -46,7 +46,7 @@ public class FloatingObject : MonoBehaviour {
 		if(Physics.Raycast(transform.position, ArenaDown, out hit, Mathf.Infinity, Layers.Field)) {
 
 
-				rigidbody.AddForce(-ArenaDown * (hoverForce * (hoverDistance - hit.distance) - 
+				GetComponent<Rigidbody>().AddForce(-ArenaDown * (hoverForce * (hoverDistance - hit.distance) - 
 				                                 hoverDampen * (Vector3.Dot(FloatingBody.velocity, -ArenaDown))), 
 				                   ForceMode.Acceleration);
 
@@ -56,7 +56,7 @@ public class FloatingObject : MonoBehaviour {
 		}
 		else {
 
-			rigidbody.AddForce(ArenaDown * hoverForce, ForceMode.Acceleration);
+			GetComponent<Rigidbody>().AddForce(ArenaDown * hoverForce, ForceMode.Acceleration);
             
 		}
 

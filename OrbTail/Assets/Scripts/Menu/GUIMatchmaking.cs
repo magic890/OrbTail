@@ -124,7 +124,7 @@ public class GUIMatchmaking : GUIMenuChoose {
 
         icon.GetComponent<SpriteRenderer>().sprite = icon_resource;
 
-        icon.renderer.material.color = kDisabledColor;
+        icon.GetComponent<Renderer>().material.color = kDisabledColor;
         icon.transform.localScale = Vector3.zero;
 
         icon.GetComponent<SmoothAnimation>().Color = kDisabledColor;

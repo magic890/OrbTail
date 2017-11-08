@@ -188,7 +188,7 @@ public abstract class NetworkPlayerBuilder : MonoBehaviour
     public void SetReady(bool value)
     {
 
-        networkView.RPC("RPCPlayerReady", RPCMode.AllBuffered, Id, value);
+        GetComponent<NetworkView>().RPC("RPCPlayerReady", RPCMode.AllBuffered, Id, value);
 
     }
     
@@ -298,7 +298,7 @@ public abstract class NetworkPlayerBuilder : MonoBehaviour
         identity.CopyTo(player.GetComponent<PlayerIdentity>());
 
         //TODO: fix this
-        player.networkView.RPC("RPCSetGameId", RPCMode.All, Id.Value);
+        player.GetComponent<NetworkView>().RPC("RPCSetGameId", RPCMode.All, Id.Value);
         player.GetComponent<GameIdentity>().Id = Id.Value;
 
         Destroy(identity);
@@ -306,13 +306,13 @@ public abstract class NetworkPlayerBuilder : MonoBehaviour
         //Tells the server that the player is ready to go
         if (!Network.isServer) {
 
-            networkView.RPC("RPCPlayerCreated", RPCMode.Server, Id, player.networkView.viewID);
+            GetComponent<NetworkView>().RPC("RPCPlayerCreated", RPCMode.Server, Id, player.GetComponent<NetworkView>().viewID);
 
         }
         else
         {
 
-            RPCPlayerCreated(Id.Value, player.networkView.viewID);
+            RPCPlayerCreated(Id.Value, player.GetComponent<NetworkView>().viewID);
 
         }
         

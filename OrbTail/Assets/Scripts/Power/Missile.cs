@@ -17,7 +17,7 @@ public class Missile : Power
     public override bool Fire()
     {
 
-        if (NetworkHelper.IsOwnerSide(Owner.networkView))
+        if (NetworkHelper.IsOwnerSide(Owner.GetComponent<NetworkView>()))
         {
 
             //Create a new rocket
@@ -45,7 +45,7 @@ public class Missile : Power
 			AudioSource.PlayClipAtPoint(launchSound, Owner.gameObject.transform.position);
 
             //The missile should have at least the speed of its owner...
-            missile.rigidbody.AddForce(Owner.rigidbody.velocity, ForceMode.VelocityChange);
+            missile.GetComponent<Rigidbody>().AddForce(Owner.GetComponent<Rigidbody>().velocity, ForceMode.VelocityChange);
 
             //Set its target
             missile.GetComponent<MissileBehavior>().SetTarget(FindTarget(Owner),

@@ -6,7 +6,7 @@ public class HUDMissileButtonHandler : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		renderer.enabled = false;
+		GetComponent<Renderer>().enabled = false;
 		builder = GameObject.FindGameObjectWithTag(Tags.Master).GetComponent<GameBuilder>();
 		builder.EventGameBuilt += OnGameBuilt;
 	}
@@ -26,7 +26,7 @@ public class HUDMissileButtonHandler : MonoBehaviour {
 
 	private void EventPowerAttached(object sender, GameObject ship, Power power) {
 		if (power.Group == PowerGroups.Main && power.Name == "Missile") {
-			renderer.enabled = true;
+			GetComponent<Renderer>().enabled = true;
 			power.EventDestroyed += PowerDestroyed;
 		}
 	}
@@ -35,7 +35,7 @@ public class HUDMissileButtonHandler : MonoBehaviour {
 		((Power) sender).EventDestroyed -= PowerDestroyed;
 
 		if (group == PowerGroups.Main) {
-			renderer.enabled = false;
+			GetComponent<Renderer>().enabled = false;
 		}
 	}
 }

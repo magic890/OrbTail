@@ -66,8 +66,8 @@ public class GUIChooseArena : GUIMenuChoose {
 			randomButton.GetComponent<TextMesh>().text = "Any";
 			break;
 		case GameBuilder.BuildMode.Host:
-			randomButton.renderer.enabled = false;
-			randomButton.collider.enabled = false;
+			randomButton.GetComponent<Renderer>().enabled = false;
+			randomButton.GetComponent<Collider>().enabled = false;
 			break;
 		}
 	}
@@ -78,8 +78,8 @@ public class GUIChooseArena : GUIMenuChoose {
 
 		foreach (GameObject arenaButton in GameObject.FindGameObjectsWithTag(Tags.ArenaSelector)) {
 			if (!hostFetcher.HasArena(arenaButton.name)) {
-				arenaButton.collider.enabled = false;
-				arenaButton.renderer.material.color = new Color(255, 255, 255, disabledAlpha);
+				arenaButton.GetComponent<Collider>().enabled = false;
+				arenaButton.GetComponent<Renderer>().material.color = new Color(255, 255, 255, disabledAlpha);
 			}
 			else {
 				oneIsActive = true;

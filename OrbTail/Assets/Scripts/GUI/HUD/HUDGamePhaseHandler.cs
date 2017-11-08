@@ -25,7 +25,7 @@ public class HUDGamePhaseHandler : MonoBehaviour {
 		builder = GameObject.FindGameObjectWithTag(Tags.Master).GetComponent<GameBuilder>();
 		builder.EventGameBuilt += OnGameBuilt;
 		blankOverlay = Instantiate(Resources.Load("Prefabs/HUD/BlankOverlay")) as GameObject;
-		blankOverlay.renderer.material.color = new Color(0,0,0,0);
+		blankOverlay.GetComponent<Renderer>().material.color = new Color(0,0,0,0);
 		blankOverlay.transform.parent = transform;
 		blankOverlay.transform.localPosition = Vector3.forward * 40f;
 		blankOverlay.SetActive(false);

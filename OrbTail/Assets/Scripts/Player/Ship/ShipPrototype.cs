@@ -55,7 +55,7 @@ public class ShipPrototype : MonoBehaviour {
         }
 
         //Client side controls the movement
-        if (NetworkHelper.IsOwnerSide(networkView))
+        if (NetworkHelper.IsOwnerSide(GetComponent<NetworkView>()))
         {
 
             MovementController movement_controller = gameObject.AddComponent<MovementController>();

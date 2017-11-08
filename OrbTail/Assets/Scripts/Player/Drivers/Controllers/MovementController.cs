@@ -52,8 +52,8 @@ public class MovementController : MonoBehaviour {
 		Quaternion yawRotation = Quaternion.AngleAxis(wheelSteer * maxTorqueForce, -arenaDown);
 		Quaternion pitchStabilization = Quaternion.LookRotation(forwardProjected, -arenaDown);
 
-		this.rigidbody.AddForce(forwardProjected * engineForce * maxSpeedForce, ForceMode.Acceleration);
-		this.rigidbody.rotation = Quaternion.Lerp(this.transform.rotation, rollRotation * yawRotation * pitchStabilization, rotationSmooth * Time.deltaTime);
+		this.GetComponent<Rigidbody>().AddForce(forwardProjected * engineForce * maxSpeedForce, ForceMode.Acceleration);
+		this.GetComponent<Rigidbody>().rotation = Quaternion.Lerp(this.transform.rotation, rollRotation * yawRotation * pitchStabilization, rotationSmooth * Time.deltaTime);
 	}
 
 

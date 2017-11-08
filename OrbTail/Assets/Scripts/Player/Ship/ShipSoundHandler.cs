@@ -54,11 +54,11 @@ public class ShipSoundHandler : MonoBehaviour {
 	}
 
 	private void OnOrbAttached(object sender, GameObject orb, GameObject ship) {
-		audio.PlayOneShot(gatherOrbSound, volumeStd);
+		GetComponent<AudioSource>().PlayOneShot(gatherOrbSound, volumeStd);
 	}
 
 	private void PlaySoundEngine(float engineForce) {
-		audio.pitch = Mathf.Abs(engineForce) + pitchGap;
+		GetComponent<AudioSource>().pitch = Mathf.Abs(engineForce) + pitchGap;
 	}
 	
 	private void OnEventEnd(object sender, GameObject winner, int info) {
